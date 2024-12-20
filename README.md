@@ -19,6 +19,7 @@ streamlit run dashboard.py
 
 ## Streamlit app
 
+#### [**Click here to view Bike Sharing Dashboard**](https://bike-sharing-analys-dj.streamlit.app/)
 
 ## Folder Direktori
 
