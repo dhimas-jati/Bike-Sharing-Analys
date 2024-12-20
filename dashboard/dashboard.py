@@ -52,8 +52,8 @@ def create_rfm_df(days_df):
     rfm_df.drop("max_order_timestamp", axis=1, inplace=True)
     return rfm_df
 
-days_df = pd.read_csv("days.csv")
-hours_df = pd.read_csv("hours.csv")
+days_df = pd.read_csv("dashboard/days.csv")
+hours_df = pd.read_csv("dashboard/hours.csv")
 
 datetime_columns = ["dteday"]
 days_df.sort_values(by="dteday", inplace=True)
@@ -74,7 +74,7 @@ max_date_hour = hours_df["dteday"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("photo.jpg")
+    st.image("dashboard/photo.jpg")
     
         # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
