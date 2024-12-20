@@ -34,8 +34,6 @@ submission
 | ├───day.csv
 | └───hours.csv
 ├───Proyek_Analisis_Data.ipynb
-├───pipfile
-├───pipfile.lock
 ├───README.md
 └───requirements.txt
 └───url.txt
