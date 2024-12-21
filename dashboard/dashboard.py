@@ -52,8 +52,8 @@ def create_rfm_df(days_df):
     rfm_df.drop("max_order_timestamp", axis=1, inplace=True)
     return rfm_df
 
-days_df = pd.read_csv("dashboard/days.csv")
-hours_df = pd.read_csv("dashboard/hours.csv")
+days_df = pd.read_csv("days.csv")
+hours_df = pd.read_csv("hours.csv")
 
 datetime_columns = ["dteday"]
 days_df.sort_values(by="dteday", inplace=True)
@@ -74,7 +74,7 @@ max_date_hour = hours_df["dteday"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("dashboard/photo.jpg")
+    st.image("photo.jpg")
     
         # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
@@ -114,11 +114,14 @@ with col3:
 
 st.subheader("Persentase penyewa Registered dengan casual dari jumlah total Bike Sharing")
 
+casual = sum(days_df['casual'])
+registered = sum(days_df['registered'])
+
+data = [casual, registered]
 labels = 'casual', 'registered'
-sizes = [15, 75] 
 
 fig, ax1 = plt.subplots()
-ax1.pie(sizes, labels=labels, autopct='%1.1f%%',colors=["#90CAF9", "#E67F0D"],)
+ax1.pie(x=data, labels=labels, autopct='%1.1f%%',colors=["#90CAF9", "#E67F0D"],)
 
 st.pyplot(fig)
 
@@ -137,17 +140,7 @@ ax.barh(oneweek_df["nameday"], oneweek_df["registered"], label="Registered")
 ax.set_title("Distribusi jenis dan jumlah Penyewa Berdasarkan Day", pad=30, fontsize=16)
 ax.set_ylabel("day")
 ax.set_xlabel("Count")
-ax.invert_yaxis()
-days = [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-    ]
-ax.set_yticks(oneweek_df["nameday"], labels=days)
+
 ax.legend(bbox_to_anchor=(1, 1.1), ncol=2)
 st.pyplot(fig)
 
