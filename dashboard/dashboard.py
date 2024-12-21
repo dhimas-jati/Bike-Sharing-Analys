@@ -78,7 +78,6 @@ regis_df = create_total_registered_df(main_df_days)
 casual_df = create_total_casual_df(main_df_days)
 oneweek_df = create_count_day_df(main_df_days)
 oneday_df = create_count_hours_df(main_df_hours)
-rfm_df = create_rfm_df(main_df_days)
 
 st.header('Dashboard Bike Sharing :sparkles:')
 
